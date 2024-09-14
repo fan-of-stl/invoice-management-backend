@@ -22,21 +22,7 @@ const createInvoice = async (invoiceData) => {
 
     const invoiceId = invoiceResult.rows[0].id;
 
-    // Insert line items
-    const insertLineItemsQuery = `
-      INSERT INTO lineItems(invoice_id, debit, glDesc, glCode, text)
-      VALUES($1, $2, $3, $4, $5)
-    `;
-    for (let lineItem of lineItems) {
-      await client.query(insertLineItemsQuery, [
-        invoiceId,
-        lineItem.debit,
-        lineItem.glDesc,
-        lineItem.glCode,
-        lineItem.text
-      ]);
-    }
-
+    
     // Commit transaction
     await client.query('COMMIT');
 

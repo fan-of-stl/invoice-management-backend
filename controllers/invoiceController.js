@@ -14,7 +14,6 @@ exports.getInvoices = async (req, res) => {
 // Create a new invoice
 exports.createInvoice = async (req, res) => {
   try {
-    console.log(req.body);
     
     const newInvoice = new Invoice(req.body);
     await newInvoice.save();

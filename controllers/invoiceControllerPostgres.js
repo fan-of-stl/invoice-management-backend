@@ -5,7 +5,6 @@ const createInvoicePostgres = async (req, res) => {
   const invoiceData = req.body;
 
   try {
-    console.log(invoiceData);
     
     const invoiceId = await createInvoice(invoiceData);
     res.status(201).json({ message: 'Invoice created', invoiceId });
